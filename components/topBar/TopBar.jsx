@@ -13,12 +13,17 @@ class TopBar extends React.Component {
   }
 
   render() {
+      const {content} = this.props;
+
     return (
       <AppBar className="topbar-appBar" position="absolute">
         <Toolbar>
           <Typography variant="h5" color="inherit">
-              This is the TopBar component
+              Ryan Dooley
           </Typography>
+            <Typography variant="h6" color="inherit" style = {{marginLeft: 'auto' }}>
+                {content ? content : 'Photo App'}
+            </Typography>
         </Toolbar>
       </AppBar>
     );

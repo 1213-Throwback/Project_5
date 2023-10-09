@@ -20,12 +20,17 @@ class UserDetail extends React.Component {
         user from window.models.userModel(userId).
  */
   render() {
-
+    const userId = this.props.match.params.userId;
+    const user = window.models.userModel(userId);
 
     return (
-        <Typography variant="body1">
-
-      </Typography>
+        <div className = "user-detail">
+            <Typography variant= = 'h5'>{`${user.first_name} ${user.last_name}`}</Typography>
+            <Typography variant= = 'body1'>{`Location: ${user.location}`}</Typography>
+            <Typography variant= = 'body1'>{`Description: ${user.description}`}</Typography>
+            <Typography variant= = 'body1'>{`Occupation: ${user.occupation}`}</Typography>
+            <Typography variant= = 'body1'>{`User ID: ${userId}`}</Typography>
+        </div>
     );
   }
 }
