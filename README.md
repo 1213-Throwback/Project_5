@@ -1,8 +1,14 @@
 # Project 5: Single Page Applications [^1]
-# scrum Team 
+# Scrum Team 
+1213 THROWBACK!!!
 # Product Owner
+Albert Bastakoti
 # Scrum Master 
+Diego Lopez
 # Developers
+Will Russo
+Ryan Dooley
+Zadok Adua 
 ## Setup
 
 You should already have installed Node.js and the npm package manager on your system. If not, follow the installation instructions in [Project 0](https://github.com/btdobbs/WA/edit/main/Project/00/README.md) now.
