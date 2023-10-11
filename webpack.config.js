@@ -3,6 +3,10 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     photoShare: './photoShare.jsx',
+    userDetail: './components/userDetail/userDetail.jsx',
+    userPhotos: './components/userPhotos/userPhotos.jsx',
+    userList: './components/userList/userList.jsx',
+
   },
   plugins: [
     new webpack.DefinePlugin({

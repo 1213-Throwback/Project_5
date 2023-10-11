@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  Typography
+    Button,
+    Typography
 } from '@mui/material';
 import './userDetail.css';
 
@@ -22,14 +23,16 @@ class UserDetail extends React.Component {
   render() {
     const userId = this.props.match.params.userId;
     const user = window.models.userModel(userId);
-
+    let photosLink = "#/photos/" + userId;
     return (
         <div className = "user-detail">
-            <Typography variant= = 'h5'>{`${user.first_name} ${user.last_name}`}</Typography>
-            <Typography variant= = 'body1'>{`Location: ${user.location}`}</Typography>
-            <Typography variant= = 'body1'>{`Description: ${user.description}`}</Typography>
-            <Typography variant= = 'body1'>{`Occupation: ${user.occupation}`}</Typography>
-            <Typography variant= = 'body1'>{`User ID: ${userId}`}</Typography>
+
+            <Button href={photosLink}>User Photos</Button>
+            <Typography variant = 'h5'>{`${user.first_name} ${user.last_name}`}</Typography>
+            <Typography variant = 'body1'>{`Location: ${user.location}`}</Typography>
+            <Typography variant = 'body1'>{`Description: ${user.description}`}</Typography>
+            <Typography variant = 'body1'>{`Occupation: ${user.occupation}`}</Typography>
+            <Typography variant = 'body1'>{`User ID: ${userId}`}</Typography>
         </div>
     );
   }

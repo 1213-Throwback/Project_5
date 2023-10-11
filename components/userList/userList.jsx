@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Button,
     Divider, Link,
     List,
     ListItem,
@@ -25,7 +26,7 @@ class UserList extends React.Component {
               {window.models.userListModel().map((item, index) => (
                   <React.Fragment key={item._id}>
                       <ListItem>
-                          <ListItemText key={index} primary={<a href={"users/:" + item._id}>{item.first_name}</a>}/>
+                          <Button href={"#/users/" + item._id}>{item.first_name}</Button>
                       </ListItem>
                       <Divider />
                   </React.Fragment>
