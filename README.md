@@ -6,8 +6,8 @@ Albert Bastakoti
 # Scrum Master 
 Diego Lopez
 # Developers
-Will Russo
-Ryan Dooley
+Will Russo,
+Ryan Dooley,
 Zadok Adua 
 ## Setup
 
