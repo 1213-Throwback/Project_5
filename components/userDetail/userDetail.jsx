@@ -62,11 +62,12 @@ class UserDetail extends React.Component {
     return (
         <div className = "user-detail">
             <Button href={photosLink}>User Photos</Button>
-            <Typography variant = 'h5'>{`${user.first_name} ${user.last_name}`}</Typography>
-            <Typography variant = 'body1'>{`Location: ${user.location}`}</Typography>
-            <Typography variant = 'body1'>{`Description: ${user.description}`}</Typography>
-            <Typography variant = 'body1'>{`Occupation: ${user.occupation}`}</Typography>
-            <Typography variant = 'body1'>{`User ID: ${user._id}`}</Typography>
+            <p className={"PageOwner"}>{user.first_name + " " + user.last_name + "'s Profile"}</p>
+            <Typography variant = {'caption'} className={"User-ID"}>{`User ID: ${user._id}`}</Typography>
+            <hr/>
+            <Typography variant = 'body1' className={"Location"}>{`Location: ${user.location}`}</Typography>
+            <Typography variant = 'body1' className={"Occupation"}>{`Occupation: ${user.occupation}`}</Typography>
+            <Typography variant = 'body1' className={"Description"}>{`Description: ${user.description}`}</Typography>
         </div>
     );
   }

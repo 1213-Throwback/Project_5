@@ -38,7 +38,7 @@ class UserList extends React.Component {
   render() {
         const { userList } = this.state;
       return (
-          <div>
+          <div className={"UserList"}>
               <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
                   {userList.map((item, index) => (
                       <React.Fragment key={item._id}>

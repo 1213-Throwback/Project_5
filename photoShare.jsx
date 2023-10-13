@@ -13,6 +13,7 @@ import TopBar from './components/topBar/TopBar';
 import UserDetail from './components/userDetail/userDetail';
 import UserList from './components/userList/userList';
 import UserPhotos from './components/userPhotos/userPhotos';
+import {border} from "@mui/system";
 
 class PhotoShare extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class PhotoShare extends React.Component {
           </Paper>
         </Grid>
         <Grid item sm={9}>
-          <Paper className="main-grid-item">
+          <Paper className="main-grid-item" style={{boxShadow: "none"}}>
             <Switch>
             <Route exact path="/"
                 render={() => (

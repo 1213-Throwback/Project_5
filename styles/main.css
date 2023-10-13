@@ -12,4 +12,15 @@ main- here.
 .main-grid-item {
   height: calc(100vh - 85px);
   padding: 10px;
+  border-color: transparent;
+}
+
+.UserList a.MuiButtonBase-root{
+  background-color: lightsteelblue;
+  color: black;
+}
+
+.main-grid-item{
+  box-shadow: transparent;
+  border-color: transparent;
 }
