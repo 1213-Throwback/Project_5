@@ -10,20 +10,36 @@ import {
     from '@mui/material';
 import './userList.css';
 import {Box} from "@mui/system";
+import fetchModel from '../../lib/fetchModelData';
 
 /**
  * Define UserList, a React component of project #5
  */
 class UserList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            userList: []
+        };
+    }
+
+    componentDidMount() {
+        const url = '/user/list';
+
+        fetchModel(url)
+            .then(response => {
+                this.setState({
+                    userList: response.data
+                });
+            })
+            .catch(error => console.error(error));
+    }
 
   render() {
-
+        const { userList } = this.state;
       return (
           <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
-              {window.models.userListModel().map((item, index) => (
+              {userList.map((item, index) => (
                   <React.Fragment key={item._id}>
                       <ListItem>
                           <Button href={"#/users/" + item._id}>{item.first_name}</Button>

@@ -4,6 +4,7 @@ import {
     Typography
 } from '@mui/material';
 import './userDetail.css';
+import fetchModel from '../../lib/fetchModelData';
 
 
 /**
@@ -12,6 +13,9 @@ import './userDetail.css';
 class UserDetail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+        user:null
+    };
   }
 /*
         This should be the UserDetail view of the PhotoShare app. Since
@@ -20,19 +24,36 @@ class UserDetail extends React.Component {
         {this.props.match.params.userId}. You can fetch the model for the
         user from window.models.userModel(userId).
  */
+    componentDidMount() {
+        const userId = this.props.match.params.userId;
+        const url = `/user/${userId}`;
+
+        fetchModel(url)
+            .then(response => {
+                this.setState({
+                    user: response.data
+                });
+            })
+            .catch(error => console.error(error));
+    }
+
   render() {
-    const userId = this.props.match.params.userId;
-    const user = window.models.userModel(userId);
-    let photosLink = "#/photos/" + userId;
+        const {user} = this.state;
+
+        if(!user){
+            return null;
+        }
+
+    const photosLink = "#/photos/" + user._id;
+
     return (
         <div className = "user-detail">
-
             <Button href={photosLink}>User Photos</Button>
             <Typography variant = 'h5'>{`${user.first_name} ${user.last_name}`}</Typography>
             <Typography variant = 'body1'>{`Location: ${user.location}`}</Typography>
             <Typography variant = 'body1'>{`Description: ${user.description}`}</Typography>
             <Typography variant = 'body1'>{`Occupation: ${user.occupation}`}</Typography>
-            <Typography variant = 'body1'>{`User ID: ${userId}`}</Typography>
+            <Typography variant = 'body1'>{`User ID: ${user.id}`}</Typography>
         </div>
     );
   }
