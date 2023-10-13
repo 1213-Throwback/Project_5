@@ -6,6 +6,7 @@ import {
 import './userPhotos.css';
 
 
+
 /**
  * Define UserPhotos, a React componment of project #5
  */
@@ -19,22 +20,23 @@ class UserPhotos extends React.Component {
     const userId = this.props.match.params.userId;
     const user = window.models.userModel(userId);
     let detailLink = "#/users/" + userId;
+
+    let photosList = window.models.photoOfUserModel(userId);
+    let photos = photosList.map((photo, index) => (
+        <div>
+          <img key={`${photo._id}`} src={"images/" + photo.file_name} alt={`${user.first_name}#${index}`} />
+          <p className={"Date"}>{photo.date_time}</p>
+        </div>
+    ));
+
+
     return (
         <div>
           <Button href={detailLink}>User Details</Button>
-          <Typography variant="body1">
-            This should be the UserPhotos view of the PhotoShare app. Since
-            it is invoked from React Router the params from the route will be
-            in property match. So this should show details of user:
-            {this.props.match.params.userId}. You can fetch the model for the user from
-            window.models.photoOfUserModel(userId):
-            <Typography variant="caption">
-              {JSON.stringify(window.models.photoOfUserModel(this.props.match.params.userId))}
-            </Typography>
-          </Typography>
+          {photos.map((photo, index) => (
+              <div key={index}>{photo}</div>
+          ))}
         </div>
-
-
     );
   }
 }

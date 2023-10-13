@@ -39,6 +39,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
+    fallback: {
+      "fs": false
+    },
   },
   output: {
     path: `${__dirname}/compiled`,
