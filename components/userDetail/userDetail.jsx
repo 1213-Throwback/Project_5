@@ -17,6 +17,7 @@ class UserDetail extends React.Component {
         user:null
     };
   }
+
 /*
         This should be the UserDetail view of the PhotoShare app. Since
         it is invoked from React Router the params from the route will be
@@ -25,16 +26,28 @@ class UserDetail extends React.Component {
         user from window.models.userModel(userId).
  */
     componentDidMount() {
-        const userId = this.props.match.params.userId;
-        const url = `/user/${userId}`;
+        const new_user_id = this.props.match.params.userId;
+        this.handleUserChange(new_user_id);
+    }
 
-        fetchModel(url)
-            .then(response => {
+    componentDidUpdate() {
+        const new_user_id = this.props.match.params.userId;
+        const current_user_id = this.state.user?._id;
+        if (current_user_id  !== new_user_id){
+            this.handleUserChange(new_user_id);
+        }
+    }
+
+    handleUserChange(user_id){
+        fetchModel("/user/" + user_id)
+            .then((response) =>
+            {
+                const new_user = response.data;
                 this.setState({
-                    user: response.data
+                    user: new_user
                 });
-            })
-            .catch(error => console.error(error));
+                const main_content = "User Details for " + new_user.first_name + " " + new_user.last_name;
+            });
     }
 
   render() {
@@ -53,7 +66,7 @@ class UserDetail extends React.Component {
             <Typography variant = 'body1'>{`Location: ${user.location}`}</Typography>
             <Typography variant = 'body1'>{`Description: ${user.description}`}</Typography>
             <Typography variant = 'body1'>{`Occupation: ${user.occupation}`}</Typography>
-            <Typography variant = 'body1'>{`User ID: ${user.id}`}</Typography>
+            <Typography variant = 'body1'>{`User ID: ${user._id}`}</Typography>
         </div>
     );
   }

@@ -38,16 +38,18 @@ class UserList extends React.Component {
   render() {
         const { userList } = this.state;
       return (
-          <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
-              {userList.map((item, index) => (
-                  <React.Fragment key={item._id}>
-                      <ListItem>
-                          <Button href={"#/users/" + item._id}>{item.first_name}</Button>
-                      </ListItem>
-                      <Divider />
-                  </React.Fragment>
-              ))}
-          </Box>
+          <div>
+              <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
+                  {userList.map((item, index) => (
+                      <React.Fragment key={item._id}>
+                          <ListItem>
+                              <Button href={"#/users/" + item._id}>{item.first_name}</Button>
+                          </ListItem>
+                          <Divider />
+                      </React.Fragment>
+                  ))}
+              </Box>
+          </div>
       );
   }
 }
